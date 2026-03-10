@@ -1,0 +1,256 @@
+/* ================================
+   CARD FIX (ADMINLTE)
+================================ */
+.card.chat-card {
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================================
+   CHAT WRAPPER
+================================ */
+.chat-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #e5ddd5;
+    overflow: hidden;
+}
+
+/* ================================
+   CHAT MESSAGE AREA (SCROLL)
+================================ */
+#chatBox {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ================================
+   MESSAGE ROW
+================================ */
+.chat-row {
+    display: flex;
+}
+
+.chat-row.admin {
+    justify-content: flex-end;
+}
+
+.chat-row.user {
+    justify-content: flex-start;
+}
+
+/* ================================
+   CHAT BUBBLE
+================================ */
+.chat-bubble {
+    max-width: 65%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    position: relative;
+    word-break: break-word;
+}
+
+.chat-row.admin .chat-bubble {
+    background: #005c4b;
+    color: #fff;
+    border-radius: 8px 0 8px 8px;
+}
+
+.chat-row.user .chat-bubble {
+    background: #202c33;
+    color: #fff;
+    border-radius: 0 8px 8px 8px;
+}
+
+/* ================================
+   DROPDOWN ⋮
+================================ */
+.msg-dropdown {
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    z-index: 999999;
+    cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+}
+
+/* ================================
+   TIME
+================================ */
+.chat-time {
+    font-size: 11px;
+    margin-top: 4px;
+    opacity: 0.7;
+    text-align: right;
+}
+
+/* ================================
+   IMAGE / VIDEO
+================================ */
+.chat-image,
+.chat-bubble video {
+    max-width: 260px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.chat-caption {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/* ================================
+   INPUT AREA (FIX BAWAH)
+================================ */
+.chat-input-wrapper {
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    background: #f0f2f5;
+}
+
+.chat-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.chat-textarea {
+    flex: 1;
+    resize: none;
+    border-radius: 20px;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.chat-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #e4e6eb;
+    border: none;
+    cursor: pointer;
+}
+
+.chat-btn.send {
+    background: #008069;
+    color: #fff;
+}
+
+/* ================================
+   PREVIEW
+================================ */
+.chat-preview {
+    padding: 10px;
+    background: #f0f2f5;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.chat-preview img,
+.chat-preview video {
+    max-width: 260px;
+    border-radius: 10px;
+}
+
+#removePreview {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* ================================
+   DELETE MENU
+================================ */
+.msg-menu {
+    position: fixed;
+    background: #2a2f32;
+    color: #fff;
+    border-radius: 8px;
+    min-width: 150px;
+    z-index: 999999;
+}
+
+.msg-menu button {
+    width: 100%;
+    padding: 10px 14px;
+    background: none;
+    border: none;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+}
+
+.msg-menu button:hover {
+    background: #3b4045;
+}
+
+.deleted-msg {
+    font-style: italic;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* ================================
+   IMAGE VIEWER
+================================ */
+.image-viewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer img {
+    max-width: 90%;
+    max-height: 85%;
+}
+
+.download-btn {
+    margin-top: 12px;
+    background: #25d366;
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: #000;
+    text-decoration: none;
+}
+
+/* ================================
+           EMOJI
+================================ */
+.emoji-box {
+    position: fixed; /* ⬅️ BUKAN absolute */
+    bottom: 90px;
+    left: 30px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    z-index: 2147483647; /* ⬅️ PALING ATAS */
+    pointer-events: auto;
+}
+
+.emoji-box span {
+    font-size: 22px;
+    margin: 6px;
+    cursor: pointer;
+}
+
+.chat-bubble {
+    position: relative;
+}

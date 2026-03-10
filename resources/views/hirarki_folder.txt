@@ -1,0 +1,50 @@
+resources/views/
+├── layouts/                          # Template utama
+│   ├── app.blade.php                 # Layout default Breeze
+│   ├── adminlte.blade.php            # Layout AdminLTE untuk admin/member
+│   ├── landing.blade.php             # Layout khusus landing page
+│
+├── components/                       # Komponen reusable
+│   ├── adminlte/                     # Komponen AdminLTE
+│   │   ├── navbar.blade.php          # Navbar AdminLTE
+│   │   ├── sidebar.blade.php         # Sidebar AdminLTE
+│   │   ├── footer.blade.php          # Footer AdminLTE
+│   │   └── control.blade.php         # Control Sidebar (opsional)
+│   │
+│   ├── landing/                      # Komponen untuk landing page
+│       ├── navbar.blade.php          # Navbar landing page
+│       ├── footer.blade.php          # Footer landing page
+│       ├── hero.blade.php            # Hero section landing page
+│       ├── features.blade.php        # Section fitur
+│       └── contact.blade.php         # Section kontak
+│
+├── partials/                         # Partial views (breadcrumb, pagination, dll.)
+│   ├── content-header.blade.php      # Header halaman (breadcrumb)
+│   └── alert.blade.php               # Komponen alert/notifikasi
+│
+├── auth/                             # Views autentikasi Breeze
+│   ├── login.blade.php               # Halaman login
+│   ├── register.blade.php            # Halaman registrasi
+│   ├── forgot-password.blade.php     # Halaman reset password
+│   └── verify-email.blade.php        # Halaman verifikasi email
+│
+├── admin/                            # Views khusus admin
+│   ├── dashboard.blade.php           # Dashboard admin
+│   ├── artworks/                        # Manajemen buku CRUD
+│   ├── members/                      # Manajemen anggota CRUD
+│   └── reports/                      # Laporan atau riwayat peminjaman
+│
+├── member/                           # Views khusus member
+│   ├── dashboard.blade.php           # Dashboard member
+│   ├── artworks/                        # Cari buku
+│   └── history/                      # Riwayat peminjaman
+│
+├── landing/                          # Views untuk landing page
+│   ├── index.blade.php               # Halaman utama landing page
+│   ├── about.blade.php               # Halaman tentang
+│   ├── features.blade.php            # Halaman fitur
+│   └── contact.blade.php             # Halaman kontak
+│
+└── errors/                           # Halaman error (404, 500, dll.)
+    ├── 404.blade.php                 # Halaman not found
+    └── 500.blade.php                 # Halaman server error

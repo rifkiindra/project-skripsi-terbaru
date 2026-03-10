@@ -1,0 +1,96 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
+        <img src="{{ asset('admin/dist/img/artifact.jpg') }}" alt="Logo" class="brand-image img-circle elevation-3">
+        <span class="brand-text font-weight-light">POLARENGINE</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+
+                @if (Auth::check() && Auth::user()->role == 'admin')
+                    <!-- Admin Panel -->
+                    <li class="nav-header">ADMIN PANEL</li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.artworks.index') }}"
+                            class="nav-link {{ Route::is('admin.artworks.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-paint-brush"></i>
+                            <p>Manajemen Artworks</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.reports.index') }}"
+                           class="nav-link {{ Route::is('admin.reports.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-chart-line"></i>
+                            <p>Laporan</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.members.index') }}"
+                            class="nav-link {{ Route::is('admin.members.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Manajemen Anggota</p>
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::check() && Auth::user()->role == 'member')
+                    <!-- Member Panel -->
+                    <li class="nav-header">MEMBER PANEL</li>
+                    <li class="nav-item">
+                        <a href="{{ route('member.dashboard') }}"
+                            class="nav-link {{ Route::is('member.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('member.artworks.index') }}"
+                           class="nav-link {{ Route::is('member.artworks.*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-paint-brush"></i>
+                           <p>Artworks Order</p>
+                        </a>
+                   </li>
+                    <li class="nav-item">
+                        <a href="{{ route('member.history.index') }}"
+                            class="nav-link {{ Route::is('member.history.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>Order History</p>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Profile and Logout -->
+                <li class="nav-header">AKUN</li>
+                <li class="nav-item">
+                    <a href="{{ route('profile.edit') }}"
+                        class="nav-link {{ Route::is('profile.edit') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>Profil</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-link text-left">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>Logout</p>
+                        </button>
+                    </form>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    <!-- /.sidebar -->
+</aside>
