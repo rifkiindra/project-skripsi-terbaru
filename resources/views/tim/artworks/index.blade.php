@@ -1,4 +1,4 @@
-@extends('layouts.adminlte')
+@extends('layouts.tim')
 
 @section('title','Dashboard Tim')
 

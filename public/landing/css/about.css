@@ -1,0 +1,127 @@
+body {
+    background: #05070a;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+}
+
+/* HEADER */
+.about-banner {
+    padding: 120px 0 60px;
+    background: linear-gradient(to bottom, #0a0f1c, transparent);
+}
+
+.about-title {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.about-subtitle {
+    color: #888;
+}
+
+/* SECTION */
+.about-section {
+    padding: 100px 0;
+}
+
+.about-section.dark {
+    background: #070b12;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+/* IMAGE */
+.about-img {
+    width: 100%;
+    border-radius: 12px;
+    transition: 0.4s;
+}
+
+.about-img:hover {
+    transform: scale(1.03);
+}
+
+/* TEXT */
+.accent {
+    color: #4da3ff;
+}
+
+.about-list {
+    padding-left: 20px;
+    line-height: 1.8;
+    color: #aaa;
+}
+
+/* TEAM */
+.team-section {
+    padding: 100px 0;
+    background: #05070a;
+}
+
+.team-card {
+    text-align: center;
+}
+
+.team-img {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #222;
+}
+
+.team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.team-img:hover img {
+    transform: scale(1.1);
+}
+
+.team-card h5 {
+    margin-top: 15px;
+}
+
+.team-card p {
+    color: #777;
+}
+
+/* CONTACT */
+.contact-section {
+    padding: 100px 0;
+    background: linear-gradient(to top, #0a0f1c, transparent);
+}
+
+.btn-contact {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #4da3ff, #0066ff);
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-contact:hover {
+    transform: scale(1.05);
+}
+
+/* ANIMATION */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}

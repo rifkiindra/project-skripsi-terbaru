@@ -1,18 +1,5 @@
 <div class="flex justify-between h-16">
     <div class="flex">
-        <!-- Logo -->
-        <div class="shrink-0 flex items-center">
-            <a href="
-                @if(Auth::check())
-                    {{ Auth::user()->role === 'admin' ? route('admin.dashboard') : route('member.dashboard') }}
-                @else
-                    {{ url('/') }}
-                @endif
-            ">
-            <img src="{{ asset('landing/images/main-logo.png') }}" class="logo img-fluid" style="max-height: 70px;">
-
-            </a>
-        </div>
 
         <!-- Navigation Links -->
         @if(Auth::check())

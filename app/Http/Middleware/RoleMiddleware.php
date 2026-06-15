@@ -11,19 +11,16 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        // 🔐 Pastikan user login
         if (!Auth::check()) {
             return redirect()->route('login');
         }
 
         $userRole = Auth::user()->role;
 
-        // ✅ Jika role user ada di daftar role yang diizinkan
         if (in_array($userRole, $roles)) {
             return $next($request);
         }
 
-        // 🔁 Redirect fallback berdasarkan role
         if ($userRole === 'admin') {
             return redirect()->route('admin.dashboard');
         }
@@ -39,7 +36,6 @@ class RoleMiddleware
         if ($userRole === 'direktur') {
             return redirect()->route('direktur.dashboard');
         }  
-
 
         abort(403, 'Unauthorized');
     }

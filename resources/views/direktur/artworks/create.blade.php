@@ -25,9 +25,10 @@
                 <div class="form-group">
                     <label for="member_id">Nama Klien</label>
                     <select name="member_id" id="member_id"
-                    class="form-control @error('member_id') is-invalid @enderror" required>
-                    <option value="">-- Pilih Klien --</option>
-                    @foreach ($members as $member)
+                        class="form-control @error('member_id') is-invalid @enderror" required>
+                        <option value="">-- Pilih Klien --</option>
+                        @foreach ($members->where('role', 'member') as $member)
+
                         <option value="{{ $member->id }}" {{ old('member_id') == $member->id ? 'selected' : '' }}>
                             {{ $member->nama }}
                         </option>

@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Artwork;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\RevisionRequested;
+
 
 class ReportController extends Controller
 {
@@ -47,10 +46,6 @@ class ReportController extends Controller
         ]);
 
         $artwork = Artwork::findOrFail($request->artwork_id);
-
-        // 🔔 kirim notifikasi email (admin)
-        //Notification::route('mail', 'rifkyindra150@gmail.com')
-        //   ->notify(new RevisionRequested($artwork, $request->message));
 
         return back()->with('success', 'Permintaan revisi berhasil dikirim.');
     }

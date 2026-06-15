@@ -19,19 +19,19 @@
 <section class="works-grid">
 
     <div class="work-card" data-title="BONDS OF AGONY">
-        <img src="{{ asset('landing/images/Bonds of Agony.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Bonds of Agony.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">BONDS OF AGONY</div>
     </div>
 
     <div class="work-card" data-title="BURLY BONES">
-        <img src="{{ asset('landing/images/Burly Bones.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Burly Bones.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">BURLY BONES</div>
     </div>
 
     <div class="work-card" data-title="CALL FOR BACKUP">
-        <img src="{{ asset('landing/images/Call for Backup.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Call for Backup.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">CALL FOR BACKUP</div>
     </div>

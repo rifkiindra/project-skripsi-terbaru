@@ -34,18 +34,10 @@ class Artwork extends Model
     'is_archived' => 0,
 ];
 
-    /* =====================
-     | RELATIONS
-     ===================== */
-
     public function member()
     {
         return $this->belongsTo(Member::class);
     }
-
-    /* =====================
-     | MUTATORS
-     ===================== */
 
     public function setJudulAttribute($value)
     {

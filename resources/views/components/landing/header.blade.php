@@ -4,7 +4,7 @@
 
     <!-- LEFT LOGO -->
     <a class="navbar-brand me-4" href="{{ route('landing.index') }}">
-        <img src="{{ asset('landing/images/main-logo.png') }}" class="logo img-fluid" style="max-height: 70px;">
+        <img src="{{ asset('landing/images/main-logo.webp') }}" class="logo img-fluid" style="max-height: 70px;">
     </a>
 
 <!-- NAVIGATION (DESKTOP ONLY) -->
@@ -22,20 +22,14 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link {{ request()->is('contact') ? 'active' : '' }}"
-            href="{{ route('landing.contact') }}">Contact</a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link {{ request()->is('features') ? 'active' : '' }}"
             href="{{ route('landing.features') }}">Karya Kami</a>
     </li>
 
 </ul>
 
-
     <!-- RIGHT AUTH BUTTON -->
-    <div class="d-none d-lg-flex align-items-center">
+    <div class="auth-buttons d-none d-lg-flex align-items-center">
         @auth
             <a href="{{ url('admin/dashboard') }}" class="btn btn-primary px-4 py-2 me-2">Dashboard</a>
         @else
@@ -47,13 +41,30 @@
         @endauth
     </div>
 
-    <!-- MOBILE TOGGLE -->
-    <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button"
-        data-bs-toggle="offcanvas" data-bs-target="#bdNavbar">
-        <svg class="navbar-icon"><use xlink:href="#navbar-icon"></use></svg>
-    </button>
+   <!-- HAMBURGER -->
+    <div id="menuToggle" class="menu-toggle d-lg-none">
+        <span></span>
+        <span></span>
+    </div>
 
 </div>
+</nav>
 
-    </nav>
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu d-lg-none">
+    <a href="{{ route('landing.about') }}">About</a>    <a href="{{ route('landing.features') }}">Karya Kami</a>
+
+    <div class="mobile-auth">
+        @auth
+            <a href="{{ url('admin/dashboard') }}" class="btn-auth primary">Dashboard</a>
+        @else
+            <a href="{{ route('login') }}" class="btn-auth">Login</a>
+            <a href="{{ route('register') }}" class="btn-auth primary">Register</a>
+        @endauth
+    </div>
+</div>
+
+<!-- OVERLAY -->
+<div id="menuOverlay" class="menu-overlay"></div>
+
 </header>

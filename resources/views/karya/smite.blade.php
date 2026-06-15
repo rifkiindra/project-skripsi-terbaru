@@ -19,19 +19,19 @@
 <section class="works-grid">
 
     <div class="work-card" data-title="BONDS OF AGONY">
-        <img src="{{ asset('landing/images/Hun Batz.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Hun Batz.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">HUN BATZ</div>
     </div>
 
     <div class="work-card" data-title="BURLY BONES">
-        <img src="{{ asset('landing/images/Baba Yaga.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Baba Yaga.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">BABA YAGA</div>
     </div>
 
     <div class="work-card" data-title="CALL FOR BACKUP">
-        <img src="{{ asset('landing/images/Owl Ra.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Owl Ra.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">OWL RA</div>
     </div>

@@ -19,19 +19,19 @@
 <section class="works-grid">
 
     <div class="work-card" data-title="CORAL CROCO">
-        <img src="{{ asset('landing/images/Coral Croco.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Coral Croco.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">CORAL CROCO</div>
     </div>
 
     <div class="work-card" data-title="HIGHLAND BASSET">
-        <img src="{{ asset('landing/images/Highland Basset.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Highland Basset.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">HIGHLAND BASSET</div>
     </div>
 
     <div class="work-card" data-title="HYDRO HYDRA">
-        <img src="{{ asset('landing/images/Hydro Hydra.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Hydro Hydra.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">HYDRO HYDRA</div>
     </div>

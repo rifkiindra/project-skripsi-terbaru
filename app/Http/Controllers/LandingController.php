@@ -21,10 +21,5 @@ class LandingController extends Controller
         //Menampilkan halaman Features Landing Page
         return view('landing.features');
     }
-    public function contact()
-    {
-        //Menampilkan contact Landing Page
-        return view('landing.contact');
-    }
     
 }

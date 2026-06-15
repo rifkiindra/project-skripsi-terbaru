@@ -1,9 +1,22 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('admin.dashboard') }}" class="brand-link">
-        <img src="{{ asset('admin/dist/img/artifact.jpg') }}" alt="Logo" class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">POLARENGINE</span>
-    </a>
+    <a href="{{ route('admin.dashboard') }}" class="brand-link d-flex align-items-center">
+
+    <img src="{{ asset('landing/images/logo.png') }}"
+         alt="Polar Engine Logo"
+         style="
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+         ">
+
+    <span class="brand-text font-weight-light text-white">
+        POLARENGINE
+    </span>
+
+</a>
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -69,6 +82,33 @@
                         </a>
                     </li>
                 @endif
+
+                @if (Auth::check() && Auth::user()->role == 'tim')
+                    <!-- Member Panel -->
+                    <li class="nav-header">TIM PANEL</li>
+                    <li class="nav-item">
+                        <a href="{{ route('tim.dashboard') }}"
+                            class="nav-link {{ Route::is('tim.dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tim.artworks.index') }}"
+                           class="nav-link {{ Route::is('tim.artworks.*') ? 'active' : '' }}">
+                           <i class="nav-icon fas fa-paint-brush"></i>
+                           <p>My Project</p>
+                        </a>
+                   </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tim.project.index') }}"
+                            class="nav-link {{ Route::is('tim.project.index') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-history"></i>
+                            <p>History</p>
+                        </a>
+                    </li>
+                @endif
+
 
                 <!-- Profile and Logout -->
                 <li class="nav-header">AKUN</li>

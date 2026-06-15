@@ -4,101 +4,42 @@
 
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('landing/css/about.css') }}">
+
+<!-- HEADER -->
 <section class="about-banner"> 
-    <div class="container py-5"> 
-        <h1 class="text-center">Tentang Kami</h1> 
-        <p class="text-center" data-aos="flip-left"> Selamat datang di Polar Engine Studio </p>
+    <div class="container text-center">
+        <h1 class="about-title">Tentang Kami</h1> 
+        <p class="about-subtitle">Selamat datang di Polar Engine Studio</p>
     </div> 
 </section>
-<style>
 
-    /* --- Section Cinematic --- */
-    .section-cinematic {
-        padding: 100px 0;
-        color: #fff;
-        background: #ffffff;
-    }
-
-    .section-cinematic h2 {
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-    }
-
-    .section-cinematic p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-    }
-
-    .team-section img {
-        transition: 0.3s;
-        border: 3px solid #fff;
-    }
-
-    .team-section img:hover {
-        transform: scale(1.1);
-    }
-
-    .team-card h5 {
-        color: #fff;
-        margin-top: 10px;
-        font-size: 1.2rem;
-        text-transform: uppercase;
-    }
-
-    .team-card p {
-        color: #aaa;
-        margin: 0;
-    }
-
-    .team-section {
-        background: #ffffff;
-        padding: 100px 0;
-    }
-
-    .contact-section {
-        background: #ffffff;
-        color: #fff;
-        padding: 100px 0;
-    }
-</style>
-
-<!-- STORY SECTION -->
-<section class="section-cinematic">
+<!-- VISI MISI -->
+<section class="about-section">
     <div class="container">
         <div class="row align-items-center">
 
-            <!-- Gambar di kiri -->
-            <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-                <img src="{{ asset('landing/images/studio.jpg') }}" 
-                     class="img-fluid rounded-4 shadow-lg"
+            <div class="col-md-6" data-aos="fade-right">
+                <img src="{{ asset('landing/images/studio.webp') }}" 
+                     class="about-img"
                      alt="Visi Misi">
             </div>
 
-            <!-- Tulisan di kanan -->
-            <div class="col-md-6 text-black" data-aos="fade-left">
-                <h2 style="font-size: 3rem; font-weight: 700; text-transform: uppercase;">
-                    Visi & Misi Kami
-                </h2>
+            <div class="col-md-6" data-aos="fade-left">
+                <h2 class="section-title">Visi & Misi</h2>
 
-                <h4 class="mt-4" style="font-weight: 600; color: #ff6a00;">
-                    Visi
-                </h4>
-                <p style="opacity: 0.9; font-size: 1.1rem;">
+                <h4 class="accent">Visi</h4>
+                <p>
                     Menjadi studio kreatif digital yang menghasilkan karya visual
                     berstandar internasional dengan pendekatan artistik sinematik.
                 </p>
 
-                <h4 class="mt-4" style="font-weight: 600; color: #ff6a00;">
-                    Misi
-                </h4>
-
-                <ul style="opacity: 0.9; font-size: 1.1rem; line-height: 1.7;">
-                    <li>Mengembangkan ilustrasi, konsep karakter, dan desain visual berkualitas tinggi.</li>
-                    <li>Menggabungkan teknologi modern dengan kreativitas artistik.</li>
-                    <li>Memberikan solusi visual bagi industri akademik, kreatif, dan komersial.</li>
-                    <li>Membangun ekosistem studio yang inovatif, kolaboratif, dan progresif.</li>
+                <h4 class="accent mt-4">Misi</h4>
+                <ul class="about-list">
+                    <li>Mengembangkan ilustrasi dan desain visual berkualitas tinggi</li>
+                    <li>Menggabungkan teknologi modern dengan kreativitas</li>
+                    <li>Memberikan solusi visual profesional</li>
+                    <li>Membangun studio yang inovatif & kolaboratif</li>
                 </ul>
             </div>
 
@@ -106,65 +47,64 @@
     </div>
 </section>
 
-<!-- STORY SECTION -->
-<section class="section-cinematic">
+<!-- STORY -->
+<section class="about-section dark">
     <div class="container">
         <div class="row align-items-center">
+
             <div class="col-md-6" data-aos="fade-right">
-                <h2>Perjalanan Kami</h2>
+                <h2 class="section-title">Perjalanan Kami</h2>
                 <p>
-                    Polar Engine Studio adalah ruang kreatif yang berfokus pada perpaduan seni digital dan teknologi. Studio kami terinspirasi oleh dunia artis seperti SixMoreVodka—dengan fokus pada karakter, visual storytelling, dan desain yang sinematik.
+                    Polar Engine Studio adalah ruang kreatif yang menggabungkan seni digital dan teknologi.
+                    Kami terinspirasi oleh visual storytelling sinematik untuk menciptakan karya yang kuat dan berkarakter.
                 </p>
                 <p>
-                    Berawal dari lingkungan kampus, kami berkembang menjadi tim yang terus bereksperimen menciptakan konten visual, digital engine, serta platform kreatif yang dapat mendukung kebutuhan akademik dan komersial.
+                    Berawal dari lingkungan kampus, kami berkembang menjadi tim kreatif yang terus berinovasi
+                    dalam dunia ilustrasi dan digital experience.
                 </p>
             </div>
+
             <div class="col-md-6" data-aos="fade-left">
-                <img src="{{ asset('landing/images/studio.jpg') }}" class="img-fluid rounded-4 shadow-lg" alt="Studio">
+                <img src="{{ asset('landing/images/studio.webp') }}" 
+                     class="about-img" 
+                     alt="Studio">
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- TEAM SECTION (SIXMOREVODKA STYLE GRID) -->
+<!-- TEAM -->
 <section class="team-section">
-    <div class="container text-center mb-5">
-        <h2 class="text-white" style="font-size: 3rem; text-transform: uppercase;">Tim Kami</h2>
-    </div>
+    <div class="container text-center">
+        <h2 class="section-title">Tim Kami</h2>
 
-    <div class="container">
-        <div class="row g-4 justify-content-center">
+        @php
+            $tim = [
+                ['name' => 'Fajar Eka Setiawan', 'role' => 'Direktur Polar Engine Jogja', 'img' => 'man1.webp'],
+                ['name' => 'Rizky Amelia Putri', 'role' => 'Finance Direktur', 'img' => 'wom.webp'],
+                ['name' => 'Ilyas Abdul Aziz', 'role' => 'Ilustrator', 'img' => 'man3.webp'],
+                ['name' => 'Afif Naufal', 'role' => 'Ilustrator', 'img' => 'man4.webp'],
+                ['name' => 'Deden Rafi Akbar', 'role' => 'Ilustrator', 'img' => 'man5.webp'],
+                ['name' => 'Fajar Nurzaman', 'role' => 'Ilustrator', 'img' => 'man6.webp'],
+            ];
+        @endphp
 
-            @php
-                $team = [
-                    ['name' => 'Eko Haryono', 'role' => 'Kepala Perpustakaan', 'img' => 'man1.png'],
-                    ['name' => 'Rehan Nurmishuari', 'role' => 'Staf Administrasi', 'img' => 'man2.png'],
-                    ['name' => 'Ilyas Abdul Aziz', 'role' => 'Staf Layanan', 'img' => 'man3.png'],
-                    ['name' => 'Afif Naufal', 'role' => 'Staf Layanan', 'img' => 'man4.png'],
-                    ['name' => 'Deden Rafi Akbar', 'role' => 'Staf Copywriting', 'img' => 'man5.png'],
-                    ['name' => 'Fajar Nurzaman', 'role' => 'Staf Copywriting', 'img' => 'man6.png'],
-                ];
-            @endphp
+        <div class="row g-4 justify-content-center mt-4">
 
-            @foreach ($team as $member)
-                <div class="col-md-4 col-lg-3 text-center team-card" data-aos="zoom-in">
-                    <img src="{{ asset('landing/images/' . $member['img']) }}" class="img-fluid rounded-circle mb-3" style="width: 150px; height:150px; object-fit:cover;" />
+            @foreach ($tim as $member)
+                <div class="col-md-4 col-lg-3 team-card" data-aos="zoom-in">
+                    <div class="team-img">
+                        <img src="{{ asset('landing/images/' . $member['img']) }}" alt="{{ $member['name'] }}">
+                    </div>
                     <h5>{{ $member['name'] }}</h5>
                     <p>{{ $member['role'] }}</p>
                 </div>
             @endforeach
-
         </div>
     </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section text-center">
-    <div class="container">
-        <h2 style="font-size: 2.5rem; text-transform: uppercase;">Hubungi Kami</h2>
-        <p class="mt-3">Ada pertanyaan atau butuh bantuan? Tim kami siap membantu Anda.</p>
-        {{-- <a href="{{ route('contact') }}" class="btn btn-light mt-3 px-4 py-2">Hubungi Kami</a> --}}
-    </div>
-</section>
+<script src="{{ asset('landing/js/about.js') }}"></script>
 
 @endsection

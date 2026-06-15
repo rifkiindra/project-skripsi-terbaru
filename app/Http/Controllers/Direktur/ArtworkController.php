@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ArtworkController extends Controller
 {
-    /**
-     * =========================
-     * LIST PEKERJAAN AKTIF
-     * =========================
-     */
     public function index()
     {
         $artworks = Artwork::with(['member','team','latestProgress'])
@@ -26,11 +21,6 @@ class ArtworkController extends Controller
         return view('direktur.artworks.index', compact('artworks'));
     }
 
-    /**
-     * =========================
-     * FORM TAMBAH ARTWORK
-     * =========================
-     */
     public function create()
     {
         return view('direktur.artworks.create', [
@@ -42,11 +32,6 @@ class ArtworkController extends Controller
         ]);
     }
 
-    /**
-     * =========================
-     * SIMPAN ARTWORK
-     * =========================
-     */
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -68,22 +53,12 @@ class ArtworkController extends Controller
             ->with('success','Artwork berhasil dibuat 🚀');
     }
 
-    /**
-     * =========================
-     * DETAIL ARTWORK
-     * =========================
-     */
     public function show(Artwork $artwork)
     {
         $artwork->load(['member', 'team', 'progresses','latestProgress']);
         return view('direktur.artworks.show', compact('artwork'));
     }
 
-    /**
-     * =========================
-     * FORM EDIT
-     * =========================
-     */
     public function edit(Artwork $artwork)
     {
         return view('direktur.artworks.edit', [
@@ -92,61 +67,33 @@ class ArtworkController extends Controller
         ]);
     }
 
-    /**
-     * =========================
-     * UPDATE ARTWORK
-     * =========================
-     */
-    public function update(Request $request, Artwork $artwork)
+    public function update(Request $request, $id)
 {
-    $rules = [
-        'judul'    => 'required|string|max:255',
-        'kategori' => 'required|string|max:100',
-        'status'   => 'required|in:sketsa,color,final',
-        'start'    => 'required|date',
-        'deadline' => 'nullable|date|after_or_equal:start',
-        'hasil'    => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ];
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'member_id' => 'required',
+        'kategori' => 'required',
+        'start' => 'required|date',
+        'deadline' => 'nullable|date',
+        'status' => 'required',
+    ]);
 
-    // 🔥 FINAL WAJIB ADA GAMBAR
-    if (
-        $request->status === 'final' &&
-        !$request->hasFile('hasil') &&
-        !$artwork->hasil
-    ) {
-       
-        return back()
-            ->withErrors([
-                'hasil' => 'Wajib upload gambar sebelum status Final'
-            ])
-            ->withInput();
-    }
+    $artwork = Artwork::findOrFail($id);
 
-    $data = $request->validate($rules);
-
-    // 🔁 JIKA ADA FILE → GANTI HASIL LAMA
-    if ($request->hasFile('hasil')) {
-
-        if ($artwork->hasil && Storage::disk('public')->exists($artwork->hasil)) {
-            Storage::disk('public')->delete($artwork->hasil);
-        }
-
-        $data['hasil'] = $request->file('hasil')
-            ->store('artworks/hasil', 'public');
-    }
-
-    $artwork->update($data);
+    $artwork->update([
+        'judul' => $request->judul,
+        'member_id' => $request->member_id,
+        'kategori' => $request->kategori,
+        'start' => $request->start,
+        'deadline' => $request->deadline,
+        'status' => $request->status,
+    ]);
 
     return redirect()
         ->route('direktur.artworks.index')
-        ->with('success', 'Artwork berhasil diperbarui');
+        ->with('success', 'Artwork berhasil diperbarui.');
 }
 
-    /**
-     * =========================
-     * ARSIP (MASUK LAPORAN)
-     * =========================
-     */
     public function archive(Artwork $artwork)
     {
         if ($artwork->status !== 'final') {
@@ -158,11 +105,6 @@ class ArtworkController extends Controller
         return back()->with('success', 'Artwork berhasil diarsipkan 🚀');
     }
 
-    /**
-     * =========================
-     * LAPORAN
-     * =========================
-     */
     public function report()
     {
         $artworks = Artwork::with(['member', 'team'])
@@ -173,11 +115,6 @@ class ArtworkController extends Controller
         return view('direktur.reports.index', compact('artworks'));
     }
 
-    /**
-     * =========================
-     * DELETE
-     * =========================
-     */
     public function destroy(Artwork $artwork)
     {
         if ($artwork->hasil && Storage::disk('public')->exists($artwork->hasil)) {

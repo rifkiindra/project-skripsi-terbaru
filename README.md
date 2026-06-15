@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # SIPERPUS (Sistem Informasi Perpustakaan)
 
 SIPERPUS adalah aplikasi sistem informasi perpustakaan berbasis web yang memungkinkan pengelolaan buku, anggota, peminjaman buku, dan laporan dengan antarmuka yang sederhana dan user-friendly.
@@ -11,20 +10,21 @@ Aplikasi ini dikembangkan sebagai bagian dari tugas akhir mata kuliah **Pengemba
 
 ### Anggota Kelompok
 
-| **Nama**                | **Peran**         |
-|-------------------------|-------------------|
-| EKO MUCHAMAD HARYONO    | Ketua  & Developer           |
-| FAJAR NURZAMAN          | Developer         |
-| DEDEN RAFI AKBAR        | Copy Writer       |
-| RAEHAN NURMISHUARI      | Developer         |
-| ILYAS ABDUL AZIZ        | Developer         |
-| MUHAMMAD AFIF NAUFAL    | Copy Writer       |
+| **Nama**             | **Peran**         |
+| -------------------- | ----------------- |
+| EKO MUCHAMAD HARYONO | Ketua & Developer |
+| FAJAR NURZAMAN       | Developer         |
+| DEDEN RAFI AKBAR     | Copy Writer       |
+| RAEHAN NURMISHUARI   | Developer         |
+| ILYAS ABDUL AZIZ     | Developer         |
+| MUHAMMAD AFIF NAUFAL | Copy Writer       |
 
 ---
 
 ## Fitur
 
 ### **Admin**
+
 - **Dashboard**: Statistik buku & anggota.
 - **Manajemen Buku**: Tambah, ubah, hapus, dan cari buku.
 - **Manajemen Anggota**: Tambah, ubah, hapus, dan kelola status anggota.
@@ -32,6 +32,7 @@ Aplikasi ini dikembangkan sebagai bagian dari tugas akhir mata kuliah **Pengemba
 - **Laporan**: Laporan peminjaman buku.
 
 ### **Member**
+
 - **Dashboard**: Informasi statistik buku dan peminjaman aktif.
 - **Cari Buku**: Cari buku berdasarkan judul atau kategori.
 - **Riwayat Peminjaman**: Lihat daftar peminjaman buku.
@@ -44,48 +45,50 @@ Aplikasi ini dikembangkan sebagai bagian dari tugas akhir mata kuliah **Pengemba
 
 2. **Instal Dependencies**
    Jalankan perintah berikut untuk menginstal semua dependencies:
-   ```bash
-   composer install
-   npm install
-   npm run dev
-   ```
+
+    ```bash
+    composer install
+    npm install
+    npm run dev
+    ```
 
 3. **Konfigurasi Database**
-   - Gunakan SQLite sebagai database:
-     ```bash
-     touch database/database.sqlite
-     ```
-   - Salin file `.env.example` menjadi `.env`:
-     ```bash
-     cp .env.example .env
-     ```
-   - Konfigurasikan database pada file `.env`:
-     ```env
-     DB_CONNECTION=sqlite
-     DB_DATABASE=/path/to/your/project/database/database.sqlite
-     ```
+    - Gunakan SQLite sebagai database:
+        ```bash
+        touch database/database.sqlite
+        ```
+    - Salin file `.env.example` menjadi `.env`:
+        ```bash
+        cp .env.example .env
+        ```
+    - Konfigurasikan database pada file `.env`:
+        ```env
+        DB_CONNECTION=sqlite
+        DB_DATABASE=/path/to/your/project/database/database.sqlite
+        ```
 
 4. **Migrate dan Seed Database**
-   ```bash
-   php artisan migrate:fresh
-   php artisan db:seed
-   ```
+
+    ```bash
+    php artisan migrate:fresh
+    php artisan db:seed
+    ```
 
 5. **Jalankan Aplikasi**
    Jalankan server aplikasi:
-   ```bash
-   php artisan serve
-   ```
-   Akses aplikasi di: [http://localhost:8000](http://localhost:8000)
+    ```bash
+    php artisan serve
+    ```
+    Akses aplikasi di: [http://localhost:8000](http://localhost:8000)
 
 ---
 
 ## Pengguna Default
 
-| **Role**  | **Email**            | **Password** |
-|-----------|----------------------|--------------|
-| Admin     | ekomh13@example.com    | admin2829     |
-| Member    | member123@example.com   | member123     |
+| **Role** | **Email**             | **Password** |
+| -------- | --------------------- | ------------ |
+| Admin    | ekomh13@example.com   | admin2829    |
+| Member   | member123@example.com | member123    |
 
 ---
 
@@ -95,7 +98,3 @@ Aplikasi ini dikembangkan sebagai bagian dari tugas akhir mata kuliah **Pengemba
 - **Database**: SQLite
 - **Frontend**: AdminLTE, Bootstrap
 - **Authentication**: Laravel Breeze
-=======
-# project-skripsi-terbaru
-untuk menyimpan seluruh kode sumber aplikasi dalam sebuah repository. Repository ini berfungsi sebagai tempat penyimpanan project sehingga kode program dapat diakses kembali kapan saja serta dapat dikelola dengan lebih terstruktur
->>>>>>> 54407dcb31c49b4bfbcf2ba0004eb801c46d9384

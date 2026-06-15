@@ -15,7 +15,6 @@
                     <th>Start</th>
                     <th>Deadline</th>
                     <th>Status</th>
-                    <th>Hasil Final</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -52,17 +51,6 @@
                     </td>
                     <td>
                         <span class="badge bg-success">Final</span>
-                    </td>
-                    <td>
-                        @if($artwork->final_image)
-                            <button class="btn btn-info btn-sm"
-                                data-bs-toggle="modal"
-                                data-bs-target="#imageModal{{ $artwork->id }}">
-                                Lihat Final
-                            </button>
-                        @else
-                            <span class="text-muted">Tidak ada</span>
-                        @endif
                     </td>
                     <td>
                         <a href="{{ route('admin.artworks.show', $artwork->id) }}"

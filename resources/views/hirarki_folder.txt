@@ -16,7 +16,7 @@ resources/views/
 │       ├── footer.blade.php          # Footer landing page
 │       ├── hero.blade.php            # Hero section landing page
 │       ├── features.blade.php        # Section fitur
-│       └── contact.blade.php         # Section kontak
+│       
 │
 ├── partials/                         # Partial views (breadcrumb, pagination, dll.)
 │   ├── content-header.blade.php      # Header halaman (breadcrumb)
@@ -42,8 +42,7 @@ resources/views/
 ├── landing/                          # Views untuk landing page
 │   ├── index.blade.php               # Halaman utama landing page
 │   ├── about.blade.php               # Halaman tentang
-│   ├── features.blade.php            # Halaman fitur
-│   └── contact.blade.php             # Halaman kontak
+│   ├── features.blade.php            # Halaman fitur            # Halaman kontak
 │
 └── errors/                           # Halaman error (404, 500, dll.)
     ├── 404.blade.php                 # Halaman not found

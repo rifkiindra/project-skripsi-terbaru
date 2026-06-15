@@ -17,7 +17,6 @@
                     <th>START</th>
                     <th>DEADLINE</th>
                     <th>STATUS</th>
-                    <th>LIHAT HASIL</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -36,17 +35,6 @@
 
                         <td>
                             <span class="badge bg-success">Final</span>
-                        </td>
-                        <td>
-                            @if ($artwork->hasil)
-                                <button class="btn btn-info btn-sm"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#imageModal{{ $artwork->id }}">
-                                    Lihat Hasil
-                                </button>
-                            @else
-                                <span class="text-muted">Belum ada hasil</span>
-                            @endif
                         </td>
                         <td>
                         <a href="{{ route('member.history.show', $artwork->id) }}"

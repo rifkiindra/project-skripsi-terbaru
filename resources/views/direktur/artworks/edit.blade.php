@@ -7,7 +7,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('admin.artworks.update', $artwork->id) }}" 
+            <form action="{{ route('direktur.artworks.update', $artwork->id) }}" 
                 method="POST"
                 enctype="multipart/form-data">
                 @csrf
@@ -119,42 +119,10 @@
     @enderror
 </div>
 
-{{-- UPLOAD HASIL --}}
-<div class="form-group mt-3">
-    <label class="fw-bold">
-        Upload Gambar {{ ucfirst(old('status', $artwork->status)) }}
-    </label>
-    <input type="file"
-           name="hasil"
-           class="form-control @error('hasil') is-invalid @enderror"
-           accept="image/*">
-    @error('hasil')
-        <span class="invalid-feedback">{{ $message }}</span>
-    @enderror
-</div>
-
-{{-- PREVIEW GAMBAR TERAKHIR --}}
-<div class="mt-4">
-    <label class="fw-bold">
-        Gambar Saat Ini ({{ ucfirst($artwork->status) }})
-    </label>
-
-    @if ($artwork->hasil)
-        <div class="mt-2">
-            <img src="{{ Storage::url($artwork->hasil) }}"
-                 class="img-thumbnail"
-                 style="max-width:250px;">
-        </div>
-    @else
-        <p class="text-muted fst-italic">
-            Belum ada gambar untuk status {{ $artwork->status }}
-        </p>
-    @endif
-</div>
 
                 <!-- Tombol Submit -->
                 <button type="submit" class="btn btn-success">Simpan Perubahan</button>
-                <a href="{{ route('admin.artworks.index') }}" class="btn btn-secondary">Kembali</a>
+                <a href="{{ route('direktur.artworks.index') }}" class="btn btn-secondary">Kembali</a>
             </form>
         </div>
     </div>

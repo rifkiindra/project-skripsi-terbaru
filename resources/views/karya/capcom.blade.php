@@ -19,19 +19,19 @@
 <section class="works-grid">
 
     <div class="work-card" data-title="BARETTA">
-        <img src="{{ asset('landing/images/Baretta.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Baretta.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">BARETTA</div>
     </div>
 
     <div class="work-card" data-title="BISON">
-        <img src="{{ asset('landing/images/Bison.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Bison.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">BISON</div>
     </div>
 
     <div class="work-card" data-title="KEN">
-        <img src="{{ asset('landing/images/Ken.jpg') }}" alt="">
+        <img src="{{ asset('landing/images/Ken.webp') }}" alt="">
         <div class="work-overlay"></div>
         <div class="work-title">KEN</div>
     </div>
