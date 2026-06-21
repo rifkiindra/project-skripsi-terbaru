@@ -11,11 +11,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
 
-            // Optional: chat berbasis project
-            $table->foreignId('project_id')
-                  ->nullable()
-                  ->constrained()
-                  ->nullOnDelete();
+            $table->unsignedBigInteger('project_id')->nullable();
 
             // Pengirim & penerima
             $table->foreignId('from_id')
