@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Facades\Auth;
 // Direktur
 use App\Http\Controllers\Direktur\DashboardController;
 use App\Http\Controllers\Direktur\ArtworkController;
@@ -29,7 +31,29 @@ use App\Http\Controllers\Chat\ArtworkChatController;
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/about', [LandingController::class, 'about'])->name('landing.about');
 Route::get('/features', [LandingController::class, 'features'])->name('landing.features');
+Route::get('/dashboard', function () {
 
+    $user = Auth::user();
+
+    if ($user->role === 'direktur') {
+        return redirect()->route('direktur.dashboard');
+    }
+
+    if ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+
+    if ($user->role === 'member') {
+        return redirect()->route('member.dashboard');
+    }
+
+    if ($user->role === 'tim') {
+        return redirect()->route('tim.dashboard');
+    }
+
+    abort(403);
+
+})->middleware(['auth'])->name('dashboard');
 Route::get('/karya/flashandblood', function () {return view('karya.flashandblood');});
 Route::get('/karya/smite', function () {return view('karya.smite');});
 Route::get('/karya/capcom', function () {return view('karya.capcom');});
