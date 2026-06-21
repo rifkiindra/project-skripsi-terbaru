@@ -65,6 +65,12 @@ jobs:
       - name: Migration Database
         run: php artisan migrate --force
 
+      - name: Install NPM
+        run: npm install
+
+      - name: Build Vite
+        run: npm run build
+
       - name: Run Test
         run: php artisan test
 
