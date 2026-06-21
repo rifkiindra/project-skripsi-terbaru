@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+
   pull_request:
     branches:
       - master
@@ -15,11 +16,14 @@ jobs:
     services:
       mysql:
         image: mysql:8.0
+
         env:
           MYSQL_DATABASE: project_skripsi
           MYSQL_ROOT_PASSWORD: root
+
         ports:
           - 3306:3306
+
         options: >-
           --health-cmd="mysqladmin ping"
           --health-interval=10s
@@ -32,13 +36,26 @@ jobs:
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
+
         with:
           php-version: "8.2"
-          extensions: mbstring, bcmath, mysql
+          extensions: mbstring,bcmath,mysql
           coverage: none
 
       - name: Install Composer
         run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+        with:
+          node-version: "20"
+
+      - name: Install NPM
+        run: npm install
+
+      - name: Build Vite
+        run: npm run build
 
       - name: Create Environment
         run: |
@@ -47,6 +64,9 @@ jobs:
           echo "APP_KEY=base64:uQ+3kx5u5V09sH91bifnzjGieWMxdD0IC5TmYX+hQp8=" >> .env
           echo "APP_DEBUG=true" >> .env
           echo "APP_URL=http://localhost" >> .env
+
+          echo "LOG_CHANNEL=stack" >> .env
+          echo "LOG_LEVEL=debug" >> .env
 
           echo "DB_CONNECTION=mysql" >> .env
           echo "DB_HOST=127.0.0.1" >> .env
@@ -59,17 +79,16 @@ jobs:
           echo "SESSION_DRIVER=file" >> .env
           echo "QUEUE_CONNECTION=sync" >> .env
 
+          echo "MAIL_MAILER=log" >> .env
+
       - name: Generate Key
         run: php artisan key:generate
 
+      - name: Clear Laravel Cache
+        run: php artisan optimize:clear
+
       - name: Migration Database
-        run: php artisan migrate --force
-
-      - name: Install NPM
-        run: npm install
-
-      - name: Build Vite
-        run: npm run build
+        run: php artisan migrate:fresh --force
 
       - name: Run Test
         run: php artisan test
