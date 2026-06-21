@@ -1,0 +1,186 @@
+/* ================= HEADER ================= */
+.site-header {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 10, 10, 0.6);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.site-header.scrolled {
+    background: rgba(10, 10, 10, 0.85);
+}
+
+/* ================= NAV ================= */
+.nav-right {
+    gap: 25px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+}
+
+.nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* hover underline */
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 1px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ================= AUTH ================= */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-auth {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.btn-auth.primary {
+    background: #00aaff;
+    border: none;
+}
+
+/* ================= HAMBURGER ================= */
+.menu-toggle {
+    width: 24px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    height: 2px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* animasi X */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: 0px;
+    width: 150px;
+
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+
+    border-radius: 12px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.25s ease;
+
+    z-index: 999;
+}
+
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.mobile-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ================= OVERLAY ================= */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+
+    z-index: 998;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .nav-links,
+    .auth-buttons {
+        display: none !important;
+    }
+}
+/* MOBILE AUTH CENTER */
+.mobile-auth {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* 👉 INI YANG BIKIN TENGAH */
+}
+
+/* BUTTON FULL WIDTH OPTIONAL */
+.mobile-auth .btn-auth {
+    width: 100%;
+    text-align: center;
+}

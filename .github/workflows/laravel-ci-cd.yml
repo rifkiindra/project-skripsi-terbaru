@@ -1,0 +1,93 @@
+name: CI/CD Sistem Informasi Manajemen Artwork
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Laravel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: mbstring, mysql, pdo_mysql
+
+      - name: Install Composer Dependency
+        run: composer install --no-progress --prefer-dist
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build Vite Laravel
+        run: |
+          npm install
+          npm run build
+
+  test:
+    name: Run Test
+    runs-on: ubuntu-latest
+    needs: build
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_DATABASE: project_skripsi
+          MYSQL_USER: root
+          MYSQL_PASSWORD: ""
+          MYSQL_ROOT_PASSWORD: ""
+
+        ports:
+          - 3306:3306
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.4
+          extensions: mbstring, mysql, pdo_mysql
+
+      - name: Install Composer
+        run: composer install
+
+      - name: Create Environment
+        run: |
+          cp .env.example .env
+
+      - name: Generate Key
+        run: php artisan key:generate
+
+      - name: Setup Database
+        run: php artisan migrate --force
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: project_skripsi
+          DB_USERNAME: root
+          DB_PASSWORD: ""
+
+      - name: Run Laravel Test
+        run: php artisan test
+
+  deploy:
+    name: Deploy Hosting
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Deploy Hosting
+        run: echo "Deploy Hosting Berhasil"

@@ -1,0 +1,105 @@
+# ==================================
+# Laravel
+# ==================================
+
+/vendor
+/node_modules
+
+# Environment
+.env
+.env.backup
+.env.production
+.env.local
+
+
+# ==================================
+# Laravel Build / Vite
+# ==================================
+
+/public/build
+/public/hot
+
+
+# ==================================
+# Upload User / File Besar
+# Jangan masuk GitHub
+# ==================================
+
+/public/uploads
+/public/videos
+
+# gambar landing besar
+/public/landing/images
+
+# gambar umum besar
+/public/images
+
+
+# ==================================
+# Storage
+# ==================================
+
+/storage/*.key
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+
+# log
+/storage/logs/*.log
+
+
+# ==================================
+# Database
+# ==================================
+
+*.sql
+*.sqlite
+*.sqlite3
+*.zip
+
+
+# ==================================
+# Cache Laravel
+# ==================================
+
+bootstrap/cache/*.php
+
+
+# ==================================
+# Testing
+# ==================================
+
+.phpunit.result.cache
+
+
+# ==================================
+# IDE
+# ==================================
+
+.idea/
+.vscode/
+
+
+# ==================================
+# OS
+# ==================================
+
+.DS_Store
+Thumbs.db
+
+
+# ==================================
+# Node
+# ==================================
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# ==================================
+# Mac
+# ==================================
+
+.AppleDouble
+.LSOverride
