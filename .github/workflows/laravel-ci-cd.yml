@@ -54,7 +54,7 @@ jobs:
 
       - name: Create Environment
         run: |
-          cp .env.example .env
+          touch .env
 
           echo "APP_NAME=Laravel" >> .env
           echo "APP_ENV=testing" >> .env
