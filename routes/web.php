@@ -43,17 +43,15 @@ Route::get('/dashboard', function () {
         return redirect()->route('admin.dashboard');
     }
 
-    if ($user->role === 'member') {
-        return redirect()->route('member.dashboard');
-    }
-
     if ($user->role === 'tim') {
         return redirect()->route('tim.dashboard');
     }
 
-    abort(403);
+    // default Breeze test
+    return redirect()->route('member.dashboard');
 
 })->middleware(['auth'])->name('dashboard');
+
 Route::get('/karya/flashandblood', function () {return view('karya.flashandblood');});
 Route::get('/karya/smite', function () {return view('karya.smite');});
 Route::get('/karya/capcom', function () {return view('karya.capcom');});
