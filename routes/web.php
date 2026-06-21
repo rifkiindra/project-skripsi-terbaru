@@ -35,22 +35,30 @@ Route::get('/dashboard', function () {
 
     $user = Auth::user();
 
-    if ($user->role === 'direktur') {
-        return redirect()->route('direktur.dashboard');
+    if (!$user) {
+        return redirect()->route('login');
     }
 
-    if ($user->role === 'admin') {
-        return redirect()->route('admin.dashboard');
+
+    switch ($user->role) {
+
+        case 'admin':
+            return redirect()->route('admin.dashboard');
+
+        case 'direktur':
+            return redirect()->route('direktur.dashboard');
+
+        case 'tim':
+            return redirect()->route('tim.dashboard');
+
+        case 'member':
+            return redirect()->route('member.dashboard');
+
+        default:
+            abort(403);
     }
 
-    if ($user->role === 'tim') {
-        return redirect()->route('tim.dashboard');
-    }
-
-    // member tetap di /dashboard untuk test Breeze
-    return view('member.dashboard');
-
-})->middleware(['auth'])->name('dashboard');
+})->middleware('auth')->name('dashboard');
 
 Route::get('/karya/flashandblood', function () {return view('karya.flashandblood');});
 Route::get('/karya/smite', function () {return view('karya.smite');});
@@ -256,12 +264,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])
         ->name('profile.edit');
 
-    Route::put('/profile/update', [ProfileController::class, 'update'])
+
+    // Breeze test memakai PATCH
+    Route::patch('/profile/update',
+        [ProfileController::class, 'update'])
         ->name('profile.update');
+
 
     Route::put('/profile/update-password',
         [ProfileController::class, 'updatePassword'])
         ->name('profile.password.update');
+
+
+    // wajib untuk test delete account Breeze
+    Route::delete('/profile',
+        [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+
 });
 
 require __DIR__ . '/auth.php';
