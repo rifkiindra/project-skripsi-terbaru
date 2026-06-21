@@ -47,8 +47,8 @@ Route::get('/dashboard', function () {
         return redirect()->route('tim.dashboard');
     }
 
-    // default Breeze test
-    return redirect()->route('member.dashboard');
+    // member tetap di /dashboard untuk test Breeze
+    return view('member.dashboard');
 
 })->middleware(['auth'])->name('dashboard');
 
