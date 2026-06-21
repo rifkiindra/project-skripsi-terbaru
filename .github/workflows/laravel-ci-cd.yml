@@ -12,6 +12,20 @@ jobs:
   laravel:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: project_skripsi
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -19,7 +33,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
+          php-version: "8.2"
           extensions: mbstring, bcmath, mysql
           coverage: none
 
@@ -34,37 +48,28 @@ jobs:
           echo "APP_DEBUG=true" >> .env
           echo "APP_URL=http://localhost" >> .env
 
-          echo "LOG_CHANNEL=stack" >> .env
-          echo "LOG_STACK=single" >> .env
-          echo "LOG_LEVEL=debug" >> .env
-
           echo "DB_CONNECTION=mysql" >> .env
           echo "DB_HOST=127.0.0.1" >> .env
           echo "DB_PORT=3306" >> .env
           echo "DB_DATABASE=project_skripsi" >> .env
           echo "DB_USERNAME=root" >> .env
-          echo "DB_PASSWORD=" >> .env
+          echo "DB_PASSWORD=root" >> .env
 
-          echo "SESSION_DRIVER=file" >> .env
           echo "CACHE_STORE=file" >> .env
+          echo "SESSION_DRIVER=file" >> .env
           echo "QUEUE_CONNECTION=sync" >> .env
-
-          echo "MAIL_MAILER=log" >> .env
 
       - name: Generate Key
         run: php artisan key:generate
 
-      - name: Prepare Laravel
-        run: |
-          php artisan config:clear
-          php artisan cache:clear
+      - name: Migration Database
+        run: php artisan migrate --force
 
       - name: Run Test
         run: php artisan test
 
       - name: Build Laravel
-        run: |
-          php artisan optimize
+        run: php artisan optimize
 
       - name: Deploy Hosting
         run: echo "Deploy berhasil"
