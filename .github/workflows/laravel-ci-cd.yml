@@ -58,7 +58,8 @@ jobs:
         run: php artisan key:generate
 
       - name: Run Laravel Test
-        run: APP_ENV=testing DB_CONNECTION=sqlite DB_DATABASE=:memory: php artisan test
+        run: |
+          APP_ENV=testing DB_CONNECTION=sqlite DB_DATABASE=":memory:" php artisan test
 
   deploy:
     name: Deploy Hosting
