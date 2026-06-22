@@ -3,7 +3,7 @@ name: CI/CD Sistem Informasi Manajemen Artwork
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
