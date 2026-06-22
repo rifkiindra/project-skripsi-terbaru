@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -9,43 +10,60 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     /**
-     * Tampilkan halaman profile.
+     * Display profile page.
      */
     public function edit()
     {
         return view('profile.edit');
     }
 
+
     /**
-     * Update profile (nama, email, foto).
+     * Update profile information.
      */
     public function update(Request $request)
     {
         $request->validate([
-            'name'          => 'required|string|max:255',
-            'email'         => 'required|email',
-            'profile_photo' => 'nullable|image|max:2048',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'profile_photo' => ['nullable', 'image', 'max:2048'],
         ]);
 
+
+        /** @var User $user */
         $user = Auth::user();
 
-        // UPDATE FOTO PROFIL (jika ada upload)
-        if ($request->hasFile('profile_photo')) {
-
-            $path = $request->file('profile_photo')->store('profile', 'public');
-
-            // simpan di database
-            $user->profile_photo_url = '/storage/' . $path;
+        if (!$user) {
+            abort(403);
         }
 
-        // UPDATE NAMA & EMAIL
-        $user->name  = $request->name;
+
+        if ($request->hasFile('profile_photo')) {
+
+            $path = $request
+                ->file('profile_photo')
+                ->store('profile', 'public');
+
+            $user->profile_photo_url =
+                '/storage/' . $path;
+        }
+
+
+        $user->name = $request->name;
         $user->email = $request->email;
 
-        $user->save(); // <— INI SUDAH BETUL, TIDAK AKAN ADA MERAH
+        $user->save();
 
-        return back()->with('success', 'Profil berhasil diperbarui!');
+
+        return redirect()
+            ->route('profile.edit')
+            ->with(
+                'success',
+                'Profil berhasil diperbarui!'
+            );
     }
+
+
 
     /**
      * Update password.
@@ -53,21 +71,96 @@ class ProfileController extends Controller
     public function updatePassword(Request $request)
     {
         $request->validate([
-            'current_password' => 'required',
-            'password'         => 'required|min:6|confirmed',
+            'current_password' => ['required'],
+            'password' => [
+                'required',
+                'confirmed',
+                'min:8'
+            ],
         ]);
 
+
+        /** @var User $user */
         $user = Auth::user();
 
-        // CEK PASSWORD LAMA
-        if (!Hash::check($request->current_password, $user->password)) {
-            return back()->with('error', 'Password lama tidak sesuai!');
+        if (!$user) {
+            abort(403);
         }
 
-        // UPDATE PASSWORD BARU
-        $user->password = Hash::make($request->password);
+
+        if (!Hash::check(
+            $request->current_password,
+            $user->password
+        )) {
+
+            return back()->withErrors([
+                'current_password'
+                => 'Password lama tidak sesuai'
+            ]);
+        }
+
+
+        $user->password =
+            Hash::make($request->password);
+
+
         $user->save();
 
-        return back()->with('success', 'Password berhasil diperbarui!');
+
+        return redirect()
+            ->route('profile.edit')
+            ->with(
+                'success',
+                'Password berhasil diperbarui!'
+            );
+    }
+
+
+
+
+    /**
+     * Delete account.
+     */
+    public function destroy(Request $request)
+    {
+        $request->validate([
+            'password' => ['required'],
+        ]);
+
+
+        /** @var User $user */
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(403);
+        }
+
+
+        if (!Hash::check(
+            $request->password,
+            $user->password
+        )) {
+
+            return back()->withErrors([
+                'password'
+                => 'Password tidak sesuai'
+            ]);
+        }
+
+
+        Auth::logout();
+
+
+        $user->delete();
+
+
+        $request->session()->invalidate();
+
+        $request
+            ->session()
+            ->regenerateToken();
+
+
+        return redirect('/');
     }
 }

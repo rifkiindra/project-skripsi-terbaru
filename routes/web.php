@@ -1,7 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
-use Illuminate\Support\Facades\Auth;
 // Direktur
 use App\Http\Controllers\Direktur\DashboardController;
 use App\Http\Controllers\Direktur\ArtworkController;
@@ -31,33 +29,16 @@ use App\Http\Controllers\Chat\ArtworkChatController;
 Route::get('/', [LandingController::class, 'index'])->name('landing.index');
 Route::get('/about', [LandingController::class, 'about'])->name('landing.about');
 Route::get('/features', [LandingController::class, 'features'])->name('landing.features');
+
 Route::get('/dashboard', function () {
+    $role = auth()->user()->role;
 
-    $user = Auth::user();
-
-    if (!$user) {
-        return redirect()->route('login');
-    }
-
-
-    switch ($user->role) {
-
-        case 'admin':
-            return redirect()->route('admin.dashboard');
-
-        case 'direktur':
-            return redirect()->route('direktur.dashboard');
-
-        case 'tim':
-            return redirect()->route('tim.dashboard');
-
-        case 'member':
-            return redirect()->route('member.dashboard');
-
-        default:
-            abort(403);
-    }
-
+    return match ($role) {
+        'direktur' => redirect('/direktur/dashboard'),
+        'admin' => redirect('/admin/dashboard'),
+        'tim' => redirect('/tim/artworks'),
+        default => redirect('/member/dashboard'),
+    };
 })->middleware('auth')->name('dashboard');
 
 Route::get('/karya/flashandblood', function () {return view('karya.flashandblood');});
@@ -264,23 +245,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])
         ->name('profile.edit');
 
-
-    // Breeze test memakai PATCH
-    Route::patch('/profile/update',
-        [ProfileController::class, 'update'])
+    Route::put('/profile/update', [ProfileController::class, 'update'])
         ->name('profile.update');
-
 
     Route::put('/profile/update-password',
         [ProfileController::class, 'updatePassword'])
         ->name('profile.password.update');
-
-
-    // wajib untuk test delete account Breeze
-    Route::delete('/profile',
-        [ProfileController::class, 'destroy'])
-        ->name('profile.destroy');
-
 });
 
 require __DIR__ . '/auth.php';

@@ -1,48 +1,15 @@
-/vendor/
-/node_modules/
-
-# Laravel
-.env
-.env.backup
-.env.production
-
-/storage/*.key
-/storage/logs/*
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/views/*
-
-# Cache
-.phpunit.result.cache
-
-# IDE
-.idea/
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Build
-/public/build
+/.env
+/vendor
+/node_modules
 /public/hot
-
-# ZIP / SQL
-*.zip
-*.sql
-
-
-# ==========================
-# Jangan ignore asset website
-# ==========================
-
-# Hapus baris ini:
-# /public/images/
-# /public/landing/images/
-# /public/uploads/
-# /public/videos/
-
-
-# Kalau uploads user ingin ignore:
-# /public/uploads/*
-# !/public/uploads/.gitkeep
+/public/build
+/storage/*.key
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+/storage/logs/*.log
+/bootstrap/cache/*.php
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
